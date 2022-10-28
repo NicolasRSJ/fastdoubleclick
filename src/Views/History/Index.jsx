@@ -1,4 +1,5 @@
 import React from 'react'
+import { Table } from '../../Components/Table'
 import "./Index.css"
 
 export const Historic = () => {
@@ -10,16 +11,7 @@ export const Historic = () => {
             <p><a href='/historic'>Historic</a></p>
         </nav>
         <section className="contents">
-            <table>
-                <tr>
-                    <th>Break Time</th>
-                    <th>Date</th>
-                </tr>
-                <tr>
-                    <td>00:01:10</td>
-                    <td>10/05/2022</td>
-                </tr>
-            </table>
+            <Table/>
         </section>
     </div>
   )

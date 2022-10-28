@@ -3,11 +3,14 @@ import "./Index.css"
 
 export const Stopwatch = () => {
 
-    const [ time, setTime ] = useState(0)
-    const [ start, setStart ] = useState(false)
+    const [ time, setTime ] = useState(0);
+    const [ start, setStart ] = useState(false);
 
     useEffect(() => {
         let interval = null;
+        const date = new Date
+        const ano = date.getDate
+        console.log(ano)
 
         if(start) {
             interval = setInterval(() => {
