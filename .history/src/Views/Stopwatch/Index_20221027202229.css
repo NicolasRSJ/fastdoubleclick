@@ -1,0 +1,8 @@
+.navigation {
+    width: 40%;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    background-color: whitesmoke;
+    border: 5px solid darkorchid;
+}

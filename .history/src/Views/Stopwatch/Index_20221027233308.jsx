@@ -1,0 +1,51 @@
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
+import "./Index.css"
+
+export const Stopwatch = () => {
+
+    const [ time, setTime ] = useState(0)
+    const [ start, setStart ] = useState(false)
+
+    useEffect(() => {
+        let interval = null;
+
+        if(start) {
+            interval = setInterval(() => {
+                setTime((time) => time + 10);
+            }, 10);
+        }else if (!start){
+            clearInterval(interval);
+            try {
+                axios.get('http://localhost:3001/')
+                    .then((resp) => {
+                        console.log(resp.data)
+                    })
+                    .catch((err) => {
+                        console.log(err)
+                    })
+            } catch {
+                console.log("Não foi possivel fazer a requisição;")
+            }
+        }
+
+        return () => clearInterval(interval)
+    }, [start])
+    
+  return (
+    <div className="container">
+        <nav className="navigation"> 
+            <p><a href='/'>Stopwatch</a></p>
+            <p><a href='/historic'>Historic</a></p>
+        </nav>
+        <section className="contents">
+            <h1>
+                <span>{("0" + (Math.floor(time / 60000) % 60)).slice(-2)}:</span>
+                <span>{("0" + (Math.floor(time / 1000) % 60)).slice(-2)}:</span>
+                <span>{("0" + (Math.floor(time / 10) % 100)).slice(-2)}</span>
+            </h1>
+            <button onClick={() => start ? setStart(false) : setStart(true)}>Click Me</button>
+        </section>
+    </div>
+  )
+}
