@@ -1,9 +1,10 @@
 import React from 'react'
 import { Table } from '../../Components/Table'
+import { resetTable } from '../../Redux/Actions'
+import { Store } from '../../Redux/Store'
 import "./Index.css"
 
-export const Historic = () => {
-    
+const Historic = () => {
   return (
     <div className="container">
         <nav className="navigation"> 
@@ -12,7 +13,10 @@ export const Historic = () => {
         </nav>
         <section className="contents">
             <Table/>
+            <button onClick={() => {Store.dispatch(resetTable()); window.location.reload(true)}}>Reset Table</button>
         </section>
     </div>
   )
 }
+
+export default Historic;

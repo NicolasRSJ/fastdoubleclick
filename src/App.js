@@ -1,12 +1,15 @@
+import { Routes ,Route } from 'react-router-dom'
+import  Historic  from './Views/History/Index'
+import  Stopwatch  from './Views/Stopwatch/Index'
 import './App.css';
-import { Historic } from './Views/History/Index';
-import { Stopwatch } from './Views/Stopwatch/Index';
-
 
 function App() {
   return (
     <div className="App">
-      <Historic/>
+      <Routes>
+        <Route element={<Stopwatch/>} path="/" exact ></Route>
+        <Route element={<Historic/>} path="/Historic" ></Route>
+      </Routes>
     </div>
   );
 }

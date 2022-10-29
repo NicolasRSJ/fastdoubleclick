@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react'
+import { addTime } from '../../Redux/Actions';
+import { Store } from '../../Redux/Store';
 import "./Index.css"
-
-export const Stopwatch = () => {
+ 
+const Stopwatch = () => {
 
     const [ time, setTime ] = useState(0);
     const [ start, setStart ] = useState(false);
@@ -9,18 +11,19 @@ export const Stopwatch = () => {
     useEffect(() => {
         let interval = null;
         const date = new Date
-        const ano = date.getDate
-        console.log(ano)
+        const currentdate = `${date.getDate()}/${date.getUTCMonth()}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
 
         if(start) {
             interval = setInterval(() => {
                 setTime((time) => time + 10);
             }, 10);
-        }else if (!start){
+        }else{
             clearInterval(interval);
-            
+            if( time !== 0 ) {
+                Store.dispatch(addTime({time: time, date: currentdate}))
+            }
+            setTime(0)
         }
-
         return () => clearInterval(interval)
     }, [start])
     
@@ -41,3 +44,6 @@ export const Stopwatch = () => {
     </div>
   )
 }
+
+
+export default Stopwatch;

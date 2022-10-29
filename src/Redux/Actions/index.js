@@ -1,13 +1,13 @@
-import { createSlice, configureStore } from "@reduxjs/toolkit";
+export const addTime = props => {
+    return{
+        type: 'domain/addTime', // Type: Nome a ser chamado para que essa Action seja executada.
+        payload: props // Payload: Trazer dados inseridos pelo usuário.
+    }
+}
 
-const configAddTime = {
-    name: 'addtime',
-    initialState: {
-        time: 0
-    },
-    reducer: {
-        addTime: (state) => {
-            
-        }
+export const resetTable = props => {
+    return{
+        type: 'domain/resetTable',
+        payload: props,
     }
 }
