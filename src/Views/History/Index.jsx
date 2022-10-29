@@ -13,7 +13,6 @@ const Historic = () => {
         </nav>
         <section className="contents">
             <Table/>
-            <button onClick={() => {Store.dispatch(resetTable()); window.location.reload(true)}}>Reset Table</button>
         </section>
     </div>
   )
